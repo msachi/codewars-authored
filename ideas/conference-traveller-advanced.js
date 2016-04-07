@@ -12,11 +12,11 @@ Find a conference for Lucy to go to.
 // Database of cities
 
 var cities = {
-	Australia: ['Melbourne','Sydney'],
-	NorthAmerica: ['NYC','San Francisco','LA','Chicago'],
-	SouthAmerica: ['Brasil','Rio','Buenos Aires'],
-	Europe: ['Berlin','Paris','London','Madrid'],
-	Africa: ['Johannesburg']
+  Australia: ['Melbourne','Sydney'],
+  NorthAmerica: ['NYC','San Francisco','LA','Chicago'],
+  SouthAmerica: ['Brasil','Rio','Buenos Aires'],
+  Europe: ['Berlin','Paris','London','Madrid'],
+  Africa: ['Johannesburg']
 };
 
 // Example input
@@ -27,28 +27,29 @@ var citiesOffered = ['LA','Chicago'];
 // Solution
 
 function decideOnCity(citiesVisited,citiesOffered) {
-	for (var i = 0; i < citiesVisited.length; i++) {
-		for (var continent in cities) {
-		    var a = cities[continent].indexOf(citiesVisited[i]);
-			if (a !== -1) {
-				cities[continent].splice(a,a+1);
-				cities[continent].push("beenHere");
-			}
-		}
-	}
-	for (var j = 0; j < citiesOffered.length; j++) {
-	    for (var continent in cities) {
-	        if (cities[continent].indexOf("beenHere") == -1
-	        	&& cities[continent].indexOf(citiesOffered[j]) != -1)
-	        	return citiesOffered[j];
-	    }
-	}
-	for (var j = 0; j < citiesOffered.length; j++) {
-		for (var continent in cities) {
-			if (cities[continent].indexOf(citiesOffered[j]) != -1)
-				return citiesOffered[j];
-		}
-	}
+  for (var i = 0; i < citiesVisited.length; i++) {
+    for (var continent in cities) {
+      var a = cities[continent].indexOf(citiesVisited[i]);
+      if (a !== -1) {
+        cities[continent].splice(a,a+1);
+        cities[continent].push("beenHere");
+      }
+    }
+  }
+  for (var j = 0; j < citiesOffered.length; j++) {
+      for (var continent in cities) {
+          if (cities[continent].indexOf("beenHere") == -1
+          && cities[continent].indexOf(citiesOffered[j]) != -1)
+            return citiesOffered[j];
+      }
+  }
+  for (var j = 0; j < citiesOffered.length; j++) {
+    for (var continent in cities) {
+      if (cities[continent].indexOf(citiesOffered[j]) != -1)
+        return citiesOffered[j];
+    }
+  }
 }
 
 // --> returns 'LA'
+
